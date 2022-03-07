@@ -62,5 +62,10 @@ class TeHelper
 
     }
 
+    public static function getTranslators(User user)
+    {
+        return User::where('user_type', 2)->get();
+    }
+
 }
 

@@ -60,7 +60,7 @@ class UserRepository extends BaseRepository
         $model->attachRole($request['role']);
         $data = array();
 
-        if ($request['role'] == env('CUSTOMER_ROLE_ID')) {
+        if ($request['role'] == Config::get('CUSTOMER_ROLE_ID')) {
 
             if($request['consumer_type'] == 'paid')
             {
@@ -129,7 +129,7 @@ class UserRepository extends BaseRepository
             }
 
 
-        } else if ($request['role'] == env('TRANSLATOR_ROLE_ID')) {
+        } else if ($request['role'] == Config::get('TRANSLATOR_ROLE_ID')) {
 
             $user_meta = UserMeta::firstOrCreate(['user_id' => $model->id]);
 
@@ -227,9 +227,6 @@ class UserRepository extends BaseRepository
 
     }
 
-    public function getTranslators()
-    {
-        return User::where('user_type', 2)->get();
-    }
+    
     
 }
